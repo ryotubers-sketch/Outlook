@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outlook</title>
+<link rel="icon" href="https://i.ibb.co/WWrpX7pY/Outlook-Logo.png">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: #0f0f0f;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.glow {
+    position: absolute;
+    filter: blur(150px);
+    opacity: 0.4;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.bg-primary { background: #00a1f1; }
+.bg-secondary { background: #1a1a1a; }
+
+.card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+}
+
+.btn-primary {
+    background: #00a1f1;
+    color: black;
+}
+
+.btn-primary:hover {
+    background: #04d5fa;
+}
+</style>
+</head>
+
+<body class="text-white relative overflow-x-hidden">
+
+<!-- Glow Background -->
+<div class="glow bg-primary top-0 left-[10%] w-[400px] h-[400px]"></div>
+<div class="glow bg-primary bottom-0 right-[10%] w-[400px] h-[400px]"></div>
+
+<!-- Particles -->
+<canvas id="particles"></canvas>
+
+<!-- Navbar -->
+<nav class="fixed top-6 left-1/2 -translate-x-1/2 w-full max-w-5xl px-6 z-50">
+    <div class="bg-secondary/70 backdrop-blur-md rounded-full border border-white/15 flex justify-between items-center px-6 py-3 shadow-sm">
+
+        <!-- Logo -->
+        <a href="home.html" class="flex items-center gap-3 hover:opacity-80 transition">
+            <img src="https://i.ibb.co/WWrpX7pY/Outlook-Logo.png" 
+                 alt="Outlook Logo" 
+                 class="h-10 w-auto object-contain">
+
+            <span class="text-xl font-bold text-primary hidden sm:block">
+             Outlook Games
+            </span>
+        </a>
+
+        <div class="hidden md:flex gap-6 text-white/70">
+            <a href="popular.html" class="hover:text-white">Popular</a>
+            <a href="recommended.html" class="hover:text-white">Recommended</a>
+            <a href="games.html" class="hover:text-white">All Games</a>
+        </div>
+
+        <form action="https://www.google.com/search" method="GET" class="flex items-center">
+          <input 
+            type="text" 
+             name="q"
+             placeholder="Search..."
+             class="px-4 py-2 rounded-full text-sm text-black focus:outline-none"
+            >
+            <button 
+               type="submit"
+                class="btn-primary px-4 py-2 rounded-full text-sm font-semibold ml-2"
+             >
+             Search
+            </button>
+        </form>
+
+    </div>
+</nav>
+
+<!-- Game Section -->
+<section class="pt-40 pb-20 px-6">
+    <div class="max-w-6xl mx-auto">
+
+        <div class="card p-6">
+
+            <!-- Game -->
+            <div id="gameArea" class="w-full aspect-video rounded-xl overflow-hidden">
+                <iframe src="https://pizzaedition.win/assets/allgames/motox3mpool/index.html" class="w-full h-full border-none" allowfullscreen></iframe>
+            </div>
+
+            <!-- Info Bar -->
+            <div class="flex flex-col md:flex-row justify-between items-center mt-6 gap-4">
+
+                <div class="flex items-center gap-4">
+                    <img src="https://i.ibb.co/WWrpX7pY/Outlook-Logo.png" class="w-14 rounded-lg">
+                    <div>
+                        <div class="font-bold text-lg">Moto X3M Pool Party</div>
+                        <div class="text-white/60 text-sm">by Unknown</div>
+                    </div>
+                </div>
+
+                <button onclick="toggleFullscreen()" class="btn-primary px-4 py-2 rounded-full">
+                        Fullscreen
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- Full Screen Script -->
+<script>
+function toggleFullscreen() {
+    const gameArea = document.getElementById("gameArea");
+
+    if (!document.fullscreenElement) {
+        gameArea.requestFullscreen().catch(err => {
+            alert(`Error trying to enable fullscreen: ${err.message}`);
+        });
+    } else {
+        document.exitFullscreen();
+    }
+}
+</script>
+
+<!-- Footer -->
+<footer class="bg-secondary/30 backdrop-blur-md border-t border-white/10 text-white px-6 py-12">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-10">
+        
+        <!-- About Section -->
+        <div class="md:col-span-1">
+            <div class="flex items-center gap-3 mb-4">
+                <img src="https://i.ibb.co/WWrpX7pY/Outlook-Logo.png" alt="Los Angeles Roleplay Logo" class="h-12 w-auto object-contain">
+                <h2 class="text-xl font-bold">Outlook Games</h2>
+            </div>
+            <p class="text-sm text-white/60 leading-relaxed">
+                Fun games as a disguise.
+            </p>
+        </div>
+
+        <!-- Community -->
+        <div>
+            <h3 class="font-semibold text-white mb-3">Community</h3>
+            <ul class="space-y-1 text-sm text-white/70">
+                <li><a href="#MadeByMe" class="nav-link">Made By Me</a></li>
+                <li><a href="#Talktomeafterclass" class="nav-link">Support</a></li>
+            </ul>
+        </div>
+
+        <!-- Legal -->
+        <div>
+            <h3 class="font-semibold text-white mb-3">Legal</h3>
+            <ul class="space-y-1 text-sm text-white/70">
+                <li><a href="#This-does-nothing" class="nav-link">Terms of Service</a></li>
+                <li><a href="#This-does-nothing" class="nav-link">Privacy Policy</a></li>
+                <li><a href="#This-does-nothing" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-white/10 mt-10 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/40 px-6 py-6 max-w-7xl mx-auto">
+        <p>© 2026 Outlook Games | Made by Ibegoodformysistera (Ant). All rights reserved.</p>
+
+        <div class="flex gap-3 text-white/50">
+    </a>
+</div>
+    </div>
+</footer>
+
+</body>
+</html>
+
+<!-- Particles Script -->
+<script>
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+window.addEventListener("resize", () => {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+
+let particlesArray = [];
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = Math.random() * 3 + 1;
+    this.speedX = Math.random() * 1.5 - 0.75;
+    this.speedY = Math.random() * 1.5 - 0.75;
+  }
+
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+
+    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+  }
+
+  draw() {
+    ctx.fillStyle = "white";
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function connectParticles() {
+  for (let a = 0; a < particlesArray.length; a++) {
+    for (let b = a; b < particlesArray.length; b++) {
+      let dx = particlesArray[a].x - particlesArray[b].x;
+      let dy = particlesArray[a].y - particlesArray[b].y;
+      let distance = dx * dx + dy * dy;
+
+      if (distance < 10000) {
+        ctx.strokeStyle = "rgba(255,255,255,0.2)";
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function init() {
+  particlesArray = [];
+  for (let i = 0; i < 100; i++) {
+    particlesArray.push(new Particle());
+  }
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  for (let i = 0; i < particlesArray.length; i++) {
+    particlesArray[i].update();
+    particlesArray[i].draw();
+  }
+
+  connectParticles();
+  requestAnimationFrame(animate);
+}
+
+init();
+animate();
+</script>
+
+</body>
+</html>
