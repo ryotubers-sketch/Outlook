@@ -201,7 +201,7 @@ body {
     <div class="max-w-6xl mx-auto grid gap-6 
                 grid-cols-[repeat(auto-fit,minmax(150px,1fr))]">
 
-        <a href="/polygtrack" 
+        <a href="/polytrack" 
            class="aspect-square flex items-center justify-center 
                   border border-white/10 
                   rounded-xl 
